@@ -74,10 +74,10 @@ export const HeroBannerSection = () => {
               fontSize: "clamp(36px, 6vw, 72px)",
               lineHeight: 1.1,
               marginBottom: 32,
-              whiteSpace: "nowrap",
+              whiteSpace: "normal",
             }}
           >
-            Serahkan pada kami
+            Serahkan pada <br /> kami
           </h2>
 
           <p
