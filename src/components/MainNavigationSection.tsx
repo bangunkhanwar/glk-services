@@ -58,7 +58,7 @@ export const MainNavigationSection = () => {
             { label: "LAYANAN", id: "layanan" },
             { label: "CARA KERJA", id: "cara-kerja" },
             { label: "HARGA", id: "harga" },
-            { label: "TESTIMONI", id: "faq" },
+            { label: "FAQ", id: "faq" },
           ].map((item) => (
             <button
               key={item.id}
