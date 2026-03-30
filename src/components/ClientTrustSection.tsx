@@ -7,59 +7,37 @@ export const ClientTrustSection = () => {
   ];
 
   return (
-    <section
-      style={{
-        borderTop: "1px solid rgba(179,136,255,0.15)",
-        borderBottom: "1px solid rgba(179,136,255,0.15)",
-        backgroundColor: "rgba(255,255,255,0.03)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: 0,
-        }}
-        className="trust-grid"
-      >
+    <section className="border-y border-purple-300/15 bg-white/5">
+      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4">
         {stats.map((item, index) => (
           <div
             key={index}
-            style={{
-              padding: "28px 0",
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              borderRight:
-                index < 3 ? "1px solid rgba(179,136,255,0.1)" : "none",
-              justifyContent: "center",
-            }}
+            className="
+              flex items-center justify-center gap-2 py-7
+              border-r border-purple-300/10
+              even:border-r-0
+              md:even:border-r
+              md:last:border-r-0
+            "
           >
             <span
+              className="font-black text-[28px]"
               style={{
                 fontFamily: "var(--font-heading)",
-                fontWeight: 900,
-                fontSize: 28,
                 background:
                   "linear-gradient(135deg, var(--accent-purple), var(--accent-cyan))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
               }}
             >
               {item.value}
             </span>
+
             <span
+              className="text-[11px] leading-[1.4] tracking-[0.5px] max-w-[70px]"
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 11,
                 color: "var(--text-secondary)",
-                letterSpacing: 0.5,
-                lineHeight: 1.4,
-                maxWidth: 70,
               }}
             >
               {item.label}
@@ -67,14 +45,6 @@ export const ClientTrustSection = () => {
           </div>
         ))}
       </div>
-
-      <style>{`
-        @media (max-width: 640px) {
-          .trust-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };

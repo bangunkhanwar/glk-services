@@ -36,6 +36,7 @@ export const ContactFormOverlaySection = () => {
         >
           Bagaimana Cara Kerjanya?
         </h2>
+
         <p
           style={{
             fontFamily: "var(--font-body)",
@@ -48,22 +49,23 @@ export const ContactFormOverlaySection = () => {
         </p>
 
         <div
+          className="steps-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 0,
           }}
-          className="steps-grid"
         >
           {steps.map((step, index) => (
             <div
               key={index}
+              className="step-card"
               style={{
                 padding: "40px 32px",
-                borderRight: index < 3 ? "1px solid rgba(179,136,255,0.1)" : "none",
+                borderRight:
+                  index < 3 ? "1px solid rgba(179,136,255,0.1)" : "none",
                 position: "relative",
+                transition: "all 0.3s ease",
               }}
-              className="step-card"
             >
               <div
                 style={{
@@ -78,6 +80,7 @@ export const ContactFormOverlaySection = () => {
               >
                 {step.num}
               </div>
+
               <h3
                 style={{
                   fontFamily: "var(--font-heading)",
@@ -92,6 +95,7 @@ export const ContactFormOverlaySection = () => {
               >
                 {step.title}
               </h3>
+
               <p
                 style={{
                   fontFamily: "var(--font-body)",
@@ -109,12 +113,49 @@ export const ContactFormOverlaySection = () => {
       </div>
 
       <style>{`
+        /* TABLET */
         @media (max-width: 900px) {
-          .steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .step-card { border-right: none !important; border-bottom: 1px solid rgba(179,136,255,0.1); }
+          .steps-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+
+          .step-card {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(179,136,255,0.1);
+          }
         }
+
+        /* MOBILE UPGRADE (INI KUNCI UTAMA) */
         @media (max-width: 540px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
+          .steps-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px;
+          }
+
+          .step-card {
+            border: 1px solid rgba(179,136,255,0.15) !important;
+            border-radius: 16px;
+            padding: 24px !important;
+            background: rgba(255,255,255,0.02);
+            
+            /* efek card */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+            /* aksen kiri */
+            border-left: 3px solid var(--accent-purple);
+
+            /* animasi halus */
+            transform: translateY(0);
+          }
+
+          .step-card:active {
+            transform: scale(0.98);
+          }
+
+          .step-card div:first-child {
+            font-size: 56px !important;
+            color: rgba(179,136,255,0.2) !important;
+          }
         }
       `}</style>
     </section>

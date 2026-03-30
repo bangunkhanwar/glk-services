@@ -15,8 +15,6 @@ export const PricingEstimationSection = () => {
       waMsg: "Halo GLK, saya mau konsultasi gratis dulu.",
       highlighted: false,
       priceColor: "var(--text-primary)",
-      bgColor: "rgba(13,13,31,0.95)",
-      borderColor: "rgba(179,136,255,0.2)",
       btnStyle: "outline-purple",
     },
     {
@@ -34,8 +32,6 @@ export const PricingEstimationSection = () => {
       highlighted: true,
       badge: "DIREKOMENDASIKAN",
       priceColor: "var(--accent-cyan)",
-      bgColor: "rgba(13,13,31,0.95)",
-      borderColor: "var(--accent-cyan)",
       btnStyle: "solid-cyan",
     },
     {
@@ -52,224 +48,174 @@ export const PricingEstimationSection = () => {
       waMsg: "Halo GLK, saya mau rakit PC / upgrade komponen.",
       highlighted: false,
       priceColor: "var(--text-primary)",
-      bgColor: "rgba(13,13,31,0.95)",
-      borderColor: "rgba(179,136,255,0.2)",
       btnStyle: "outline-white",
     },
   ];
 
   return (
-    <section id="harga" style={{ padding: "100px 0" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+    <section id="harga" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Heading */}
         <h2
+          className="font-black mb-3"
           style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 900,
             fontSize: "clamp(28px, 5vw, 48px)",
             color: "var(--text-primary)",
-            marginBottom: 12,
+            fontFamily: "var(--font-heading)",
           }}
         >
           Estimasi Harga Servis
         </h2>
+
         <p
+          className="text-sm mb-14"
           style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 15,
             color: "var(--text-secondary)",
-            marginBottom: 56,
+            fontFamily: "var(--font-body)",
           }}
         >
           Pilih paket yang sesuai dengan kebutuhan perangkat Anda.
         </p>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 24,
-            alignItems: "stretch",
-          }}
-          className="pricing-grid"
-        >
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {plans.map((plan, index) => (
             <div
               key={index}
+              className={`
+                group relative flex flex-col p-8 rounded-2xl overflow-hidden
+                border transition-all duration-300
+                hover:-translate-y-2 hover:shadow-2xl hover:rotate-[0.3deg]
+                ${
+                  plan.highlighted
+                    ? "scale-105 border-cyan-400 shadow-cyan-400/20"
+                    : "border-white/10 hover:border-cyan-400/40"
+                }
+              `}
               style={{
-                border: `1px solid ${plan.borderColor}`,
-                backgroundColor: plan.bgColor,
-                padding: 36,
-                display: "flex",
-                flexDirection: "column",
-                position: "relative",
+                background:
+                  "linear-gradient(180deg, rgba(13,13,31,0.95), rgba(13,13,31,0.85))",
               }}
             >
-              {/* Badge */}
-              {plan.badge && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: -14,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    backgroundColor: "var(--accent-cyan)",
-                    padding: "4px 16px",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 10,
-                    color: "#0a0a14",
-                    fontWeight: 700,
-                    letterSpacing: 1,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {plan.badge}
-                </div>
-              )}
+              {/* Glow effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                <div className="absolute inset-0 bg-cyan-400/5 blur-2xl"></div>
+              </div>
 
+              {/* Badge */}
+             {plan.badge && (
+              <div className="mb-4 flex justify-center">
+                <div className="relative">
+                  
+                  {/* Glow */}
+                  <div className="absolute inset-0 bg-cyan-400/30 blur-md rounded-full"></div>
+
+                  {/* Badge */}
+                  <div className="
+                    relative px-4 py-1 text-[10px] font-bold tracking-[1.5px]
+                    rounded-full whitespace-nowrap
+                    bg-gradient-to-r from-cyan-400 to-cyan-300
+                    text-[#0a0a14] shadow-md
+                  ">
+                    {plan.badge}
+                  </div>
+
+                </div>
+              </div>
+            )}
+
+              {/* Tag */}
               <p
+                className="text-xs mb-2 tracking-wider"
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
                   color: "var(--text-secondary)",
-                  marginBottom: 8,
-                  letterSpacing: 0.5,
+                  fontFamily: "var(--font-mono)",
                 }}
               >
                 {plan.tag}
               </p>
+
+              {/* Price */}
               <h3
+                className="font-black leading-none mb-1 transition-all duration-300 group-hover:scale-105"
                 style={{
-                  fontFamily: "var(--font-heading)",
-                  fontWeight: 900,
                   fontSize: "clamp(36px, 4vw, 56px)",
                   color: plan.priceColor,
-                  marginBottom: 4,
-                  lineHeight: 1,
+                  textShadow: plan.highlighted
+                    ? "0 0 20px rgba(34,211,238,0.4)"
+                    : "none",
+                  fontFamily: "var(--font-heading)",
                 }}
               >
                 {plan.price}
               </h3>
+
+              {/* Note */}
               <p
+                className="text-[11px] mb-8 tracking-wider"
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 11,
                   color: "var(--text-muted)",
-                  marginBottom: 32,
-                  letterSpacing: 0.5,
+                  fontFamily: "var(--font-mono)",
                 }}
               >
                 {plan.note}
               </p>
 
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                  margin: "0 0 32px 0",
-                  display: "flex",
-                  flexDirection: "column",
-                  flex: 1,
-                }}
-              >
+              {/* Features */}
+              <ul className="flex flex-col flex-1 mb-8">
                 {plan.features.map((feat, fi) => (
                   <li
                     key={fi}
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 12,
-                      color: "var(--text-secondary)",
-                      padding: "14px 0",
-                      borderBottom: "1px solid rgba(179,136,255,0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
-                    }}
+                    className="flex items-center gap-3 py-3 text-xs text-gray-300 border-b border-white/5 hover:border-cyan-400/30 transition"
+                    style={{ fontFamily: "var(--font-mono)" }}
                   >
-                    <span style={{ color: "var(--accent-cyan)", fontSize: 14 }}>✓</span>
+                    <span className="text-cyan-400 text-sm">✓</span>
                     {feat}
                   </li>
                 ))}
               </ul>
 
+              {/* Button */}
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(plan.waMsg)}`}
+                href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+                  plan.waMsg
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "block",
-                  textAlign: "center",
-                  padding: "16px",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  textDecoration: "none",
-                  transition: "all 0.2s",
-                  ...(plan.btnStyle === "solid-cyan" && {
-                    backgroundColor: "var(--accent-cyan)",
-                    color: "#0a0a14",
-                    border: "none",
-                    fontWeight: 700,
-                  }),
-                  ...(plan.btnStyle === "outline-purple" && {
-                    backgroundColor: "transparent",
-                    color: "var(--text-primary)",
-                    border: "1px solid rgba(179,136,255,0.4)",
-                  }),
-                  ...(plan.btnStyle === "outline-white" && {
-                    backgroundColor: "transparent",
-                    color: "var(--text-primary)",
-                    border: "1px solid rgba(255,255,255,0.3)",
-                  }),
-                }}
-                onMouseEnter={(e) => {
-                  if (plan.btnStyle === "solid-cyan") {
-                    (e.currentTarget as HTMLElement).style.opacity = "0.85";
-                  } else {
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-cyan)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--accent-cyan)";
+                className={`
+                  relative text-center py-4 text-xs tracking-wider font-semibold
+                  transition-all duration-300 overflow-hidden rounded-lg group
+                  ${
+                    plan.btnStyle === "solid-cyan"
+                      ? "bg-cyan-400 text-[#0a0a14] hover:shadow-lg hover:shadow-cyan-400/40"
+                      : "border border-white/20 text-white hover:border-cyan-400 hover:text-cyan-400"
                   }
-                }}
-                onMouseLeave={(e) => {
-                  if (plan.btnStyle === "solid-cyan") {
-                    (e.currentTarget as HTMLElement).style.opacity = "1";
-                  } else if (plan.btnStyle === "outline-purple") {
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(179,136,255,0.4)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
-                  } else {
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.3)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
-                  }
-                }}
+                `}
+                style={{ fontFamily: "var(--font-mono)" }}
               >
-                {plan.cta}
+                <span className="relative z-10">{plan.cta}</span>
+
+                {/* Background hover */}
+                <div className="absolute inset-0 bg-cyan-400 opacity-0 group-hover:opacity-10 transition duration-300"></div>
+
+                {/* Shine effect */}
+                <div className="absolute top-0 left-[-100%] w-full h-full bg-white/10 skew-x-[-20deg] group-hover:left-[120%] transition-all duration-700"></div>
               </a>
             </div>
           ))}
         </div>
 
+        {/* Footer note */}
         <p
+          className="text-[11px] text-center mt-10 tracking-wider"
           style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 11,
             color: "var(--text-muted)",
-            textAlign: "center",
-            marginTop: 32,
-            letterSpacing: 0.5,
+            fontFamily: "var(--font-mono)",
           }}
         >
           // Harga final dikonfirmasi setelah diagnosis — tidak ada biaya tersembunyi
         </p>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .pricing-grid {
-            grid-template-columns: 1fr !important;
-            max-width: 480px;
-            margin: 0 auto;
-          }
-        }
-      `}</style>
     </section>
   );
 };
