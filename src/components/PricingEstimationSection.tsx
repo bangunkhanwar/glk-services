@@ -1,4 +1,4 @@
-const WA_NUMBER = "6285943016048";
+const WA_NUMBER = "6282115413366";
 
 export const PricingEstimationSection = () => {
   const plans = [
