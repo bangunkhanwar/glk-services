@@ -9,6 +9,7 @@ export const ContactFormBorderSection = () => {
     deskripsi: "",
     lokasi: "",
   });
+  const [formError, setFormError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -17,18 +18,50 @@ export const ContactFormBorderSection = () => {
   };
 
   const handleSubmit = () => {
+    const nama = formData.nama.trim();
+    const whatsapp = formData.whatsapp
+      .replace(/\D/g, "")
+      .trim();
+
+    const deskripsi = formData.deskripsi.trim();
+    const lokasi = formData.lokasi.trim();
+
+    if (!nama) {
+      setFormError("Silakan isi nama terlebih dahulu.");
+      return;
+    }
+
+    if (whatsapp.length < 9) {
+      setFormError(
+        "Silakan masukkan nomor WhatsApp yang valid."
+      );
+      return;
+    }
+
+    if (!deskripsi) {
+      setFormError(
+        "Silakan ceritakan kendala perangkat terlebih dahulu."
+      );
+      return;
+    }
+
+    setFormError("");
+
     const msg = `Halo GLK! Saya ingin konsultasi.
 
-Nama: ${formData.nama}
-No. WhatsApp: ${formData.whatsapp}
-Lokasi: ${formData.lokasi}
+  Nama: ${nama}
+  No. WhatsApp: ${formData.whatsapp}
+  Lokasi: ${lokasi || "-"}
 
-Deskripsi Masalah:
-${formData.deskripsi}`;
+  Deskripsi Masalah:
+  ${deskripsi}`;
 
     window.open(
-      `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,
-      "_blank"
+      `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+        msg
+      )}`,
+      "_blank",
+      "noopener,noreferrer"
     );
   };
 
@@ -40,9 +73,8 @@ ${formData.deskripsi}`;
     fontFamily: "var(--font-body)",
     fontSize: 15,
     color: "var(--text-primary)",
-    outline: "none",
     transition: "border-color 0.2s",
-    borderRadius: 0,
+    borderRadius: 8,
   };
 
   const labelStyle: React.CSSProperties = {
@@ -62,7 +94,7 @@ ${formData.deskripsi}`;
   ];
 
   return (
-    <section id="kontak" style={{ padding: "60px 0 100px" }}>
+    <section id="kontak" style={{ padding: "40px 0 72px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
@@ -119,7 +151,7 @@ ${formData.deskripsi}`;
               >
                 Ceritakan
                 <br />
-                Masalah mu.
+                Masalah Anda.
               </h2>
 
               <div
@@ -173,8 +205,9 @@ ${formData.deskripsi}`;
             {/* Right side - Form */}
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div>
-                <label style={labelStyle}>&gt; NAMA LENGKAP</label>
+                <label style={labelStyle} htmlFor="nama">&gt; NAMA LENGKAP</label>
                 <input
+                  id="nama"
                   type="text"
                   name="nama"
                   placeholder="Nama Anda..."
@@ -186,9 +219,11 @@ ${formData.deskripsi}`;
                 />
               </div>
               <div>
-                <label style={labelStyle}>&gt; NOMOR WHATSAPP</label>
+                <label style={labelStyle} htmlFor="whatsapp">&gt; NOMOR WHATSAPP</label>
                 <input
-                  type="text"
+                  id="whatsapp"
+                  type="tel"
+                  inputMode="numeric"
                   name="whatsapp"
                   placeholder="08xxxxxxxxxx"
                   value={formData.whatsapp}
@@ -199,8 +234,9 @@ ${formData.deskripsi}`;
                 />
               </div>
               <div>
-                <label style={labelStyle}>&gt; DESKRIPSI MASALAH</label>
+                <label style={labelStyle} htmlFor="deskripsi">&gt; DESKRIPSI MASALAH</label>
                 <textarea
+                  id="deskripsi"
                   name="deskripsi"
                   placeholder="Ceritakan gejala yang terjadi pada perangkat Anda (contoh: 'laptop tidak mau nyala sejak kemarin, layar gelap tapi kipas bunyi')..."
                   value={formData.deskripsi}
@@ -212,11 +248,12 @@ ${formData.deskripsi}`;
                 />
               </div>
               <div>
-                <label style={labelStyle}>&gt; LOKASI / KECAMATAN</label>
+                <label style={labelStyle} htmlFor="lokasi">&gt; LOKASI / KECAMATAN (OPSIONAL)</label>
                 <input
+                  id="lokasi"
                   type="text"
                   name="lokasi"
-                  placeholder="Kecamatan / Kelurahan Anda..."
+                  placeholder="isi jika membutuhkan home visit..."
                   value={formData.lokasi}
                   onChange={handleChange}
                   style={inputStyle}
@@ -225,7 +262,26 @@ ${formData.deskripsi}`;
                 />
               </div>
 
+              {formError && (
+                <p
+                  role="alert"
+                  style={{
+                    margin: 0,
+                    padding: "10px 12px",
+                    border: "1px solid rgba(255,120,120,0.35)",
+                    backgroundColor: "rgba(255,120,120,0.06)",
+                    color: "#ffb4b4",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 11,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {formError}
+                </p>
+              )}
+
               <button
+                type="button"
                 onClick={handleSubmit}
                 style={{
                   width: "100%",
@@ -275,6 +331,12 @@ ${formData.deskripsi}`;
       </div>
 
       <style>{`
+        .contact-inner input:focus,
+        .contact-inner textarea:focus {
+          border-color: var(--accent-purple);
+          outline: none;
+        }
+
         @media (max-width: 768px) {
           .contact-inner { padding: 32px 24px !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }

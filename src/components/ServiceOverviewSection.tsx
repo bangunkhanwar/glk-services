@@ -3,31 +3,31 @@ export const ServiceOverviewSection = () => {
     {
       tag: "[HW]",
       title: "SERVIS\nHARDWARE",
-      desc: "Laptop mati, layar rusak, keyboard error, overheating, ganti thermal paste, upgrade RAM & SSD.",
+      desc: "Laptop mati, layar bermasalah, keyboard error, overheating, cleaning, thermal paste, serta upgrade RAM dan SSD.",
       badge: "HARDWARE",
     },
     {
       tag: "[SW]",
-      title: "INSTALASI\nSOFTWARE",
-      desc: "Install ulang Windows/Linux, setting driver, aktivasi Office, hapus virus & malware, optimasi sistem.",
-      badge: "BISA REMOTE",
+      title: "SOFTWARE &\nREMOTE SUPPORT",
+      desc: "Instalasi Windows, Microsoft Office dan aplikasi lainnya, konfigurasi driver, aktivasi dengan lisensi resmi, troubleshooting serta optimasi sistem.",
+      badge: "ULTRAVIEWER / TEAMVIEWER",
     },
     {
       tag: "[PC]",
-      title: "RAKIT PC",
-      desc: "Konsultasi build PC sesuai budget & kebutuhan. Gaming, editing, atau workstation — kami bantu pilih komponen terbaik.",
+      title: "RAKIT &\nUPGRADE PC",
+      desc: "Konsultasi build PC sesuai budget dan kebutuhan untuk gaming, editing, pekerjaan, maupun workstation.",
       badge: "CUSTOM BUILD",
     },
     {
       tag: "[HV]",
       title: "HOME VISIT",
-      desc: "Teknisi datang ke lokasi Anda di area Bandung & sekitarnya. Tidak perlu bongkar-pasang sendiri.",
-      badge: "AREA BANDUNG, CIMAHI\nDAN SEKITARNYA",
+      desc: "Teknisi datang langsung untuk pengecekan, instalasi, upgrade, atau penanganan perangkat yang membutuhkan pengerjaan onsite.",
+      badge: "BANDUNG, CIMAHI\n& SEKITARNYA",
     },
   ];
 
   return (
-    <section id="layanan" style={{ padding: "100px 0" }}>
+    <section id="layanan" style={{ padding: "72px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <h2
           style={{
@@ -52,7 +52,7 @@ export const ServiceOverviewSection = () => {
             lineHeight: 1.6,
           }}
         >
-          Semua permasalahan hardware & software, ditangani oleh teknisi berpengalaman.
+          Solusi hardware, software, remote support, upgrade, dan home visit sesuai kebutuhan perangkat Anda.
         </p>
 
         <div

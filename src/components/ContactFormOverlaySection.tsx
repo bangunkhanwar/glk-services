@@ -3,27 +3,27 @@ export const ContactFormOverlaySection = () => {
     {
       num: "01",
       title: "KONSULTASI GRATIS",
-      desc: "Ceritakan masalah Anda via form atau WhatsApp. Tidak ada biaya apapun pada proses ini.",
+      desc: "Ceritakan kendala melalui form atau WhatsApp. Kami akan membantu menentukan langkah awal yang paling sesuai.",
     },
     {
       num: "02",
       title: "DIAGNOSIS &\nESTIMASI",
-      desc: "Tim kami menganalisis dan memberikan estimasi biaya + waktu sebelum anda memutuskan lanjut atau tidak.",
+      desc: "Kami menganalisis kendala dan memberikan estimasi biaya serta waktu pengerjaan sebelum Anda memutuskan untuk melanjutkan.",
     },
     {
       num: "03",
       title: "PENANGANAN",
-      desc: "Servis dilakukan — remote via TeamViewer/AnyDesk, atau teknisi datang ke lokasi Anda.",
+      desc: "Penanganan dilakukan secara remote melalui UltraViewer atau TeamViewer untuk kendala yang memungkinkan, atau teknisi datang ke lokasi.",
     },
     {
       num: "04",
-      title: "SELESAI +\nGARANSI",
-      desc: "Perangkat kembali normal. Setiap servis disertai garansi — jika ada masalah yang sama, kami tangani ulang.",
+      title: "SELESAI +\nPENGUJIAN",
+      desc: "Perangkat diuji kembali setelah pengerjaan. Ketentuan garansi akan diinformasikan sesuai jenis layanan yang dilakukan.",
     },
   ];
 
   return (
-    <section id="cara-kerja" style={{ padding: "100px 0" }}>
+    <section id="cara-kerja" style={{ padding: "72px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <h2
           style={{

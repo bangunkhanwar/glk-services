@@ -1,9 +1,21 @@
 export const ClientTrustSection = () => {
   const stats = [
-    { value: "50+", label: "Pelanggan Puas" },
-    { value: "<30M", label: "Waktu Respon" },
-    { value: "100%", label: "Garansi" },
-    { value: "20+", label: "Home Visit Remote" },
+    {
+      value: "REMOTE",
+      label: "UltraViewer / TeamViewer",
+    },
+    {
+      value: "ONSITE",
+      label: "Bandung, Cimahi & Sekitarnya",
+    },
+    {
+      value: "HW + SW",
+      label: "Hardware & Software",
+    },
+    {
+      value: "<30 MENIT",
+      label: "Target Respon Chat",
+    },
   ];
 
   return (
@@ -13,7 +25,8 @@ export const ClientTrustSection = () => {
           <div
             key={index}
             className={`
-              flex items-center justify-center gap-3 py-8 px-4
+              flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3 py-8 px-4
+              text-center md:text-left
               
               border-purple-300/10
               
@@ -27,7 +40,7 @@ export const ClientTrustSection = () => {
           >
             {/* VALUE */}
             <span
-              className="font-black text-[26px] md:text-[28px]"
+              className="font-black text-[18px] md:text-[21px]"
               style={{
                 fontFamily: "var(--font-heading)",
                 background:
@@ -41,7 +54,7 @@ export const ClientTrustSection = () => {
 
             {/* LABEL */}
             <span
-              className="text-[11px] leading-[1.4] tracking-[0.5px] w-20"
+              className="text-[11px] leading-[1.4] tracking-[0.5px] text-center max-w-[140px]"
               style={{
                 fontFamily: "var(--font-mono)",
                 color: "var(--text-secondary)",

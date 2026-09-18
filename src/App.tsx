@@ -36,7 +36,6 @@ function App() {
             transition-all duration-300
             hover:scale-110 hover:shadow-cyan-400/50
             active:scale-95
-            animate-[fadeIn_0.3s_ease]
           "
         >
           <ArrowUp size={20} />

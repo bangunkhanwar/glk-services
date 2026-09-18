@@ -3,23 +3,27 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Berapa lama waktu servisnya?",
-    a: "Tergantung jenis kerusakannya. Servis ringan kayak install ulang atau bersihin debu biasanya selesai dalam 1 hari. Upgrade SSD/RAM biasanya 2–3 jam. Kita selalu kasih estimasi waktu di awal dan update terus via WA.",
+    a: "Waktu pengerjaan tergantung jenis kendala. Instalasi software atau pekerjaan ringan umumnya dapat diselesaikan lebih cepat, sedangkan kerusakan hardware membutuhkan diagnosis terlebih dahulu. Estimasi waktu akan diinformasikan sebelum pengerjaan.",
   },
   {
-    q: "Gimana kalau laptop nggak bisa diperbaiki?",
-    a: "Kami akan memberitahu dengan jujur kondisi perangkat Anda. Tidak ada biaya diagnosis jika perangkat tidak bisa diperbaiki. Kami juga bisa bantu konsultasi opsi terbaik seperti upgrade atau penggantian komponen.",
+    q: "Bagaimana jika perangkat tidak bisa diperbaiki?",
+    a: "Kami akan menjelaskan kondisi perangkat dan pilihan yang tersedia. Jika diperlukan, kami juga dapat memberikan rekomendasi upgrade, penggantian komponen, atau solusi alternatif yang lebih efisien.",
   },
   {
     q: "Apakah data saya aman?",
-    a: "Keamanan data Anda adalah prioritas kami. Kami tidak akan mengakses, menyalin, atau menghapus data Anda tanpa izin. Untuk servis yang berisiko pada data, kami akan meminta persetujuan dan merekomendasikan backup terlebih dahulu.",
+    a: "Kami tidak mengakses, menyalin, atau menghapus data tanpa izin. Untuk pekerjaan yang berpotensi memengaruhi data, kami akan menginformasikan risikonya dan menyarankan backup terlebih dahulu.",
+  },
+  {
+    q: "Kendala apa saja yang bisa ditangani secara remote?",
+    a: "Remote support dapat digunakan untuk berbagai kendala software seperti instalasi aplikasi, Microsoft Office, konfigurasi driver, aktivasi dengan lisensi resmi, troubleshooting, dan optimasi sistem. Remote dilakukan melalui UltraViewer atau TeamViewer.",
   },
   {
     q: "Bisa home visit ke luar Bandung?",
-    a: "Saat ini layanan home visit tersedia di area Bandung, Cimahi, dan sekitarnya. Untuk area luar Bandung, kami menyediakan layanan remote via TeamViewer atau AnyDesk.",
+    a: "Home visit difokuskan untuk Bandung, Cimahi, dan area sekitarnya. Untuk lokasi lain, silakan konsultasikan terlebih dahulu melalui WhatsApp. Kendala software tertentu tetap dapat ditangani secara remote.",
   },
   {
-    q: "Sparepart yang dipakai original?",
-    a: "Kami menggunakan sparepart original atau OEM berkualitas. Kami akan memberikan informasi lengkap mengenai sparepart yang akan digunakan beserta harganya sebelum pengerjaan dimulai.",
+    q: "Apakah sparepart diinformasikan terlebih dahulu?",
+    a: "Ya. Jika diperlukan penggantian komponen, jenis komponen dan estimasi biayanya akan diinformasikan terlebih dahulu sebelum pengerjaan dilanjutkan.",
   },
 ];
 
@@ -27,7 +31,7 @@ export const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState<number>(-1);
 
   return (
-    <section id="faq" style={{ padding: "100px 0" }}>
+    <section id="faq" style={{ padding: "72px 0" }}>
       <div
         style={{
           maxWidth: 900,
@@ -55,6 +59,9 @@ export const FaqSection = () => {
             return (
               <div key={index} className={`faq-item ${isOpen ? "open" : ""}`}>
                 <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
                   onClick={() =>
                     setOpenIndex(isOpen ? -1 : index)
                   }

@@ -19,7 +19,7 @@ export const PricingEstimationSection = () => {
     },
     {
       tag: "servis",
-      price: "50rb+",
+      price: "Rp50.000+",
       note: "*tergantung kerusakan",
       features: [
         "semua jenis kerusakan",
@@ -36,7 +36,7 @@ export const PricingEstimationSection = () => {
     },
     {
       tag: "rakit bundle / upgrade",
-      price: "150rb+",
+      price: "Rp150.000+",
       note: "*tergantung komponen",
       features: [
         "RAM + SSD upgrade",
@@ -53,7 +53,7 @@ export const PricingEstimationSection = () => {
   ];
 
   return (
-    <section id="harga" className="py-20">
+    <section id="harga" className="py-14">
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <h2
@@ -83,12 +83,11 @@ export const PricingEstimationSection = () => {
             <div
               key={index}
               className={`
-                group relative flex flex-col p-8 rounded-2xl overflow-hidden
+                relative flex flex-col p-8 rounded-2xl overflow-hidden
                 border transition-all duration-300
-                hover:-translate-y-2 hover:shadow-2xl hover:rotate-[0.3deg]
                 ${
                   plan.highlighted
-                    ? "scale-105 border-cyan-400 shadow-cyan-400/20"
+                    ? "lg:scale-105 border-cyan-400 shadow-cyan-400/20"
                     : "border-white/10 hover:border-cyan-400/40"
                 }
               `}
@@ -97,10 +96,6 @@ export const PricingEstimationSection = () => {
                   "linear-gradient(180deg, rgba(13,13,31,0.95), rgba(13,13,31,0.85))",
               }}
             >
-              {/* Glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
-                <div className="absolute inset-0 bg-cyan-400/5 blur-2xl"></div>
-              </div>
 
               {/* Badge */}
              {plan.badge && (
@@ -137,9 +132,9 @@ export const PricingEstimationSection = () => {
 
               {/* Price */}
               <h3
-                className="font-black leading-none mb-1 transition-all duration-300 group-hover:scale-105"
+                className="font-black leading-[1.15] mb-1"
                 style={{
-                  fontSize: "clamp(36px, 4vw, 56px)",
+                  fontSize: "clamp(28px, 3.2vw, 44px)",
                   color: plan.priceColor,
                   textShadow: plan.highlighted
                     ? "0 0 20px rgba(34,211,238,0.4)"
@@ -184,7 +179,7 @@ export const PricingEstimationSection = () => {
                 rel="noopener noreferrer"
                 className={`
                   relative text-center py-4 text-xs tracking-wider font-semibold
-                  transition-all duration-300 overflow-hidden rounded-lg group
+                  transition-all duration-300 overflow-hidden rounded-lg
                   ${
                     plan.btnStyle === "solid-cyan"
                       ? "bg-cyan-400 text-[#0a0a14] hover:shadow-lg hover:shadow-cyan-400/40"
@@ -194,12 +189,6 @@ export const PricingEstimationSection = () => {
                 style={{ fontFamily: "var(--font-mono)" }}
               >
                 <span className="relative z-10">{plan.cta}</span>
-
-                {/* Background hover */}
-                <div className="absolute inset-0 bg-cyan-400 opacity-0 group-hover:opacity-10 transition duration-300"></div>
-
-                {/* Shine effect */}
-                <div className="absolute top-0 left-[-100%] w-full h-full bg-white/10 skew-x-[-20deg] group-hover:left-[120%] transition-all duration-700"></div>
               </a>
             </div>
           ))}
